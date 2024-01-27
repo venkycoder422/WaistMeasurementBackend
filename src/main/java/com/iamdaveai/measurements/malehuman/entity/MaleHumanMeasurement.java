@@ -1,5 +1,7 @@
 package com.iamdaveai.measurements.malehuman.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,17 +22,17 @@ public class MaleHumanMeasurement {
     @Column(name = "male_human_measurement_id")
     private Long maleHumanMeasurementId;
 
-    @Column(name = "height_cm")
-    private float heightCm;
+    @Column(name = "height_cm",precision = 5, scale = 2)
+    private BigDecimal heightCm;
 
-    @Column(name = "weight_kgs")
-    private float weightKgs;
+    @Column(name = "weight_kgs",precision = 5, scale = 2)
+    private BigDecimal weightKgs;
 
-    @Column(name = "age")
-    private float age;
+    @Column(name = "age",precision = 5, scale = 2)
+    private BigDecimal age; 
 
-    @Column(name = "waist_cm")
-    private float waistCm;
+    @Column(name = "waist_cm",precision = 5, scale = 2)
+    private BigDecimal waistCm;
 
     @Column(name = "del_flag")
     private boolean delFlag;

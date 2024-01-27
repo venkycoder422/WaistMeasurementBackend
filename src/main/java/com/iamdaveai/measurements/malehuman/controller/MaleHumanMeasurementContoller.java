@@ -1,5 +1,6 @@
 package com.iamdaveai.measurements.malehuman.controller;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,21 @@ public class MaleHumanMeasurementContoller {
     @GetMapping("/measurements/getAll")
     public ResponseEntity<?> getAllMeasurements(HttpServletRequest request) {
         return new ResponseEntity<>(maleHumanService.getAllMeasurements(), HttpStatus.OK);
+    }
+
+    @GetMapping("/getMeasurement")
+    public ResponseEntity<?> getMeasurement(
+            @RequestParam BigDecimal heightCm,
+            @RequestParam BigDecimal weightKgs,
+                @RequestParam BigDecimal age) {        Optional<MaleHumanMeasurement> measurementOptional = maleHumanService
+                .getMeasurementByHeightAndWeightAndAge(heightCm, weightKgs, age);
+
+        if (measurementOptional.isPresent()) {
+            return ResponseEntity.ok(measurementOptional.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found your Waist size");
+        }
+
     }
 
 }

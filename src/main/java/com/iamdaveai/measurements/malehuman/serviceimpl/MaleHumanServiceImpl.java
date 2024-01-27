@@ -1,5 +1,6 @@
 package com.iamdaveai.measurements.malehuman.serviceimpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +26,12 @@ public class MaleHumanServiceImpl implements MaleHumanService {
     @Override
     public List<MaleHumanMeasurement> getAllMeasurements() {
       return maleHumanMeasurementRepo.findAll();
+    }
+
+    @Override
+    public Optional<MaleHumanMeasurement> getMeasurementByHeightAndWeightAndAge(BigDecimal heightCm, BigDecimal weightKgs,
+    BigDecimal age) {
+      
+          return maleHumanMeasurementRepo.getMeasurementByHeightAndWeightAndAge(heightCm,weightKgs,age);
     }
 }
